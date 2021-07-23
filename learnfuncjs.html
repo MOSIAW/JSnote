@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        函数就是封装了一段可以被重复执行调用的代码块
+        目的:让大量代码重复使用
+        形参不用声明 
+
+        //写函数求两个数的最大值
+        return num1 > num2 ? num1 : num2;
+        return只能返回一个值,最后一个值
+        //但是可以返回数组
+        return [3,-1,2];
+
+        函数的两种声明方式:
+            命名函数:
+            function fn(){
+                console.log(arguments);  
+                函数内置伪数组(有length属性,索引存储,没有pop()等方法)
+                用于传递所有实参
+                console.log(arguments.length);
+                console.log(arguments[2]);
+            }
+            匿名函数:
+            var 变量名 = function(){};
+
+        全局/(函数)局部作用域: 名字的可用范围
+        (函数)局部作用域:
+            内部函数可以访问外部函数,外不能访问内
+        js没有块级作用域:
+            if(){ var num = 10}   log(num)可以调用
+        全局变量特殊情况:
+            在函数内部未调用的变量
+            num = 1;
+        作用域链(就近原则): 内部函数访问外部函数的变量,采取链式查找
+
+        预解析:js代码是由浏览器中的JS解析器执行的(预解析、代码执行)
+        js引擎会把所有var,function提升到当前作用域的最前
+        https://www.bilibili.com/video/BV1Sy4y1C7ha?p=142&spm_id_from=pageDriver
+        变量预解析(变量提升：把所有变量声明提升到当前作用域的最前 不提升赋值)
+        函数预解析(函数提升：把所有函数声明提升到当前作用域的最前 不调用函数)
+
+        ***** 结果是几？
+        var num = 10;
+        fun();
+        function fun () {
+            console.log (num) ;
+            var num=20 ;
+        }
+        //相当于执行了以下操作
+        var num;
+        function fun() {
+            var num;
+            console. log(num);
+            num = 20;
+        }
+        num = 10;
+        fun();
+        结果是：undefined
+
+        ********************
+        //案例2
+        f1();
+        console.log(c);
+        console.log(b);
+        console.log(a);
+        function f1(){
+            var a = b = c = 9; 
+            //相当于var a = 9; b = 9; c = 9; 
+            // 不是var a = 9, b = 9, c = 9;
+            //b和c直接赋值没有var声明当全局变量看
+            console.log (a);
+            console.log (b);
+            console.log (c);
+        }
+        //相当于
+        function f1() {  //不调用 自己不执行
+            var a;
+            a = b = c = 9;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        f1();   //调用
+        console.log(c);
+        console.log(b);
+        console.log(a);
+        //输出5个9，最后一个错误
+
+        三个方法创建对象
+        1.对象字面量创建对象
+        var obj = {
+            uname :'张三',
+            name,type  //ES6增强对象字面量
+            sayHi:function(){
+                console.log('hi');
+            }
+        }
+        调用对象属性
+        console.log(obj.uname); 
+        console.log(obj['age']);
+        .方法后面跟的必须是一个指定的属性名称,不可以是数字
+        []方法里面可以是变量,属性名可以是数字
+        当动态为对象添加属性时，必须使用[]，不可用.
+        
+        属性和变量不同,属性在对象里,不需要声明
+        函数和方法不同,方法在对象里
+
+        2.new object创建对象
+        var obj = new Object();
+        obj.age = 18;
+        obj.sayHi = function(){
+            console.log('Hi');
+        }
+        
+        3.构造函数(泛指)  封装的是对象(特指)
+        把对象里相同的属性和方法抽象,封装出来
+        首字母大写与普通函数区分
+        普通函数直接调用函数名(),构造函数需要new 
+        function Na(uname,age,sex){  //首字母必须大写
+            this.属性 = 值;
+            this.方法 = function(){}
+            //不需要return
+        }
+        var ldh = new Na('名字',18,'男')
+        返回一个对象
+
+        // new在执行时会做四件事情:
+        // 1.在内存中创建一个新的空对象。
+        // 2.让this指向这个新的对象。
+        // 3.执行构造函数里面的代码，给这个新对象添加属性和方法。
+        // 4.返回这个新对象（所以构造函数里面不需要return ) .
+
+        遍历对象
+        for in 输出属性名
+        log(obj[i]) 得到属性值
+
+        利用MDN查找方法
+        console.log(Math.abs('-1'));  //隐式转换成数字型-1
+        console.log(Math.random);  //[0,1) 不包括1
+        
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+        }
+    
+        js对象分为3种:自定义对象、内置对象 、浏览器对象
+        内置对象,Math,Date,Array,String
+        js自带对象,提供了常用的属性和方法
+
+        Math静态,不是构造函数,直接调用
+        
+        Date()是一个构造函数必须new(实例化)
+        var date = new Date('2019-10-1 8:8:8');
+        console.log(date.getFullYear);  //当前年份
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
