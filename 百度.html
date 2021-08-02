@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度</title>
+    <style>
+        #headspace{
+            margin: 18px 0 0 10px;
+            /* background-color: red; */
+            overflow: auto;
+        }
+        .groupa1{
+            /* box-sizing: border-box; */
+            float: left;
+        }
+        .a1{
+            color: black;
+            font-size: 12.5px;
+            margin-right: 28px;
+            text-decoration: none;
+        }
+        .more{
+            position: absolute;
+            display: inline-block;
+        }
+        .as{
+            /* display: none; */
+            position: relative;
+            top: 4px;
+            left: -8px;
+        }
+        /* #other:hover .as{
+            display: block;
+        } */
+        /* .as1{
+            /* display: none; */
+            /* height: 25px;
+            width: 40px;
+            background-color: rgb(243, 243, 243);
+            border-bottom: 1px solid #999;
+            border-left: 1px solid #999;
+            border-right: 1px solid rgba(146, 146, 146, 0.493);
+            text-align: center;
+            vertical-align: middle;
+        } */ 
+        .groupa2{
+            float: right;
+            width: 100px;
+        }
+        .logina1{
+            float: right;
+            background-color: #4E71F2;
+            color: white;
+            font-size: 12.5px;
+            text-decoration: none;
+            line-height: 100%;
+            text-align: center;
+            display: block;
+            height: 25px;
+            width: 46px;
+            padding: 6px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        input,button{ 
+            vertical-align:middle;  
+            /* 对齐表单和按钮 */
+        } 
+        .baidu{
+            text-align: center;
+        }
+        .baidu img{
+            width: 320px;
+        }
+        input{
+            width: 430px;
+            height: 40px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #cfcfcf;
+            border-right-width: 0;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+        }
+        input:hover{
+            border: 2px solid #919191;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            background: #4E6EF2;
+            border: #4E6EF2;
+            border-style: solid;
+            border-radius: 0 10px 10px 0;
+            font-size: 16px;
+            color: white;
+            outline: none;
+            visibility: inherit;
+        }
+
+        #bottom{
+            height: 350px;
+            position: relative;
+            /* background-color: rgb(224, 64, 77); */
+        }
+        .box{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="headspace">
+        <div class="groupa1">
+            <a href="" class="a1">新闻</a>
+            <a href="" class="a1">hao123</a>
+            <a href="" class="a1">地图</a>
+            <a href="" class="a1">视频</a>
+            <a href="" class="a1">贴吧</a>
+            <a href="" class="a1">学术</a>
+            <div class="more">
+                <a href="" class="a1" id="other">更多</a>
+            </div>
+        </div>
+        <div class="groupa2">
+            <a href="" class="a1">设置</a>
+            <a href="https://passport.baidu.com/v2/?login&tpl=mn&u=http%3A%2F%2Fwww.baidu.com%2F&sms=5" class="logina1">登录</a>
+        </div>
+    </div>
+
+    <div class="baidu">
+        <img class="img" src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"><br>
+        <input type="" name=""><button>百度一下</button>
+    </div>    
+
+    <div id="bottom">
+        <div class="box">
+            <img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/qrcode/qrcode-hover@2x-f9b106a848.png">
+        </div>
+    </div>
+
+    <script>
+        var groupa = document.querySelectorAll('.as1');
+        groupa.onmouseover = function(){
+            this.style.display = "block";
+        }
+        groupa.onmouseout = function(){
+            this.style.display = "none";
+        }
+    </script>
+</body>
+</html>

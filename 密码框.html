@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码框</title>
+    <style>
+        #box1{
+            position: relative;
+            width: 350px;
+            margin: 160px auto;
+            /* border: 1px solid red; */
+            border-bottom: 1px solid #ccc;
+        }
+        #pwd{
+            height: 25px;
+            width: 310px;
+            padding: 2px;
+            border: 0;
+            outline: none;
+        }
+        #box1 #eye{
+            position: absolute;
+            right: 4px;
+            width: 28px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <label for="pwd">
+            <img src="./img/close.jpg" alt="" id="eye">
+        </label>
+        <input type="password" id="pwd">
+
+    </div>
+    <script>
+        var pwd = document.getElementById('pwd');
+        var eye = document.getElementById('eye');
+        var flag = 0 ;
+        eye.onclick = function(){
+            if(flag == 0) {
+                pwd.type = 'text' ;
+                flag = 1; 
+            }else {
+                pwd.type = 'password';
+                flag = 0;
+                img.src="./img/img2.jpg" ;
+            }
+        }
+    </script>
+</body>
+</html>

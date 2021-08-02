@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入密码判断长度</title>
+    <style>
+        .box{
+            margin: 100px auto;
+            /* background-color: royalblue; */
+        }
+        .box input{
+            padding: 5px;
+            height: 8px;
+            outline: none;
+        }
+        .warn{
+            display: inline-block;
+            font-size: 12px;
+            color: #ccc;
+            background: url(/img/warn.jpg) no-repeat left center;
+            background-size: 13px;
+            padding-left: 15px;
+        }
+        .change{
+            color: red;
+            display: inline-block;
+            font-size: 12px;
+            background: url(/img/wrong.jpg) no-repeat left center;
+            padding-left: 15px;
+            background-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" name="">
+        <p class="warn">请输入6~16位的密码</p>
+        
+    </div>
+    <script>
+        var inp = document.querySelector('input');
+        var text = document.querySelector('.warn');
+        inp.onblur = function(){
+            //表单中值的长度inp.value.length
+            if(this.value.length < 6){
+                console.log('错误');
+                text.className = 'warn change';
+                text.innerHTML = '重新输入大于6位';
+            }else{
+                text.className = 'warn';
+                text.innerHTML = '正确';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab切换栏</title>
+    <style>
+        .head{
+            height: 40px;
+            font-size: 0;
+        }
+        .title{
+            height: 40px;
+            width: 100px;
+            background-color: rgb(185, 185, 185);
+            display: inline-block;
+            margin: 0;
+            font-size: 12px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .change{
+            background-color: red;
+        }
+        .text{
+            display: none;
+        }
+        .text:nth-child(1){
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="title change">1</div>
+        <div class="title">2</div>
+        <div class="title">3</div>
+        <div class="title">4</div>
+    </div>
+    <div class="content">
+        <div class="text ">aaa</div>
+        <div class="text ">bbb</div>
+        <div class="text ">ccc</div>
+        <div class="text ">ccc</div>
+    </div>
+    
+</body>
+    <script>
+        // window.onload=function(){
+            // let title = document.getElementsByClassName('title');
+            // let text = document.getElementsByClassName('text');
+            
+            // for(let j = 0;j<title.length;j++){
+            //     title[j].onclick = function(){
+            //         for(let i = 0;i<title.length;i++){ 
+            //             //排他思想 干掉所有人
+            //             title[i].className = 'title';
+            //             text[i].style.display='none';
+            //             // console.log(i);
+            //         }
+            //         // console.log(i);  //i=5
+            //         this.className = 'title change';
+
+            //         console.log('j='+j);
+            //         text[j].style.display='block';
+            //     }
+            // }
+        // };
+
+        /********自定义属性法********/
+            let title = document.getElementsByClassName('title');
+            let text = document.querySelectorAll('.text');
+            for(let j = 0;j<title.length;j++){
+                title[j].setAttribute('index',j);
+                title[j].onclick = function(){
+                    for(let i = 0;i<title.length;i++){ 
+                        title[i].className = 'title';
+                        text[i].style.display='none';
+                    }
+                    this.className = 'title change';
+
+                    var index = this.getAttribute('index');
+                    text[index].style.display = 'block';
+                }
+            }
+
+
+    </script>
+</html>

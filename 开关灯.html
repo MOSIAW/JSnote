@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开关灯</title>
+</head>
+<body>
+    <button id="light">开关灯</button>
+    <script>
+        
+        var lig = document.getElementById('light');
+        var body = document.body;
+        // var body=document.getElementsByTagName('body')[0];
+        var i = 0;  //es定义域问题 
+        //https://blog.csdn.net/weixin_46393552/article/details/107642340       
+        lig.onclick = function(){
+            if(i == 0){
+                console.log('1');
+                body.style.backgroundColor = 'black';
+                i = 1;
+            }else{
+                body.style.backgroundColor = 'white';
+                i = 0;
+            }
+        }
+
+    </script>
+</body>
+</html>

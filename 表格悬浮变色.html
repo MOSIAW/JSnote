@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格悬浮变色</title>
+    <style>
+        .bg{
+            background-color: teal;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" cellspacing="0">  
+        <!-- 单线表格 -->
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="all"></td>
+                <th>Month</th>
+                <th>Savings</th>
+            </tr> 
+        </thead>
+        <tbody id="tb">
+                <tr>
+                    <td><input type="checkbox" name="" value=""></td>
+                    <td>January</td>
+                    <td>100</td>
+                 </tr>
+                <tr>
+                    <td><input type="checkbox" name="" value=""></td>
+                    <td>January</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" value=""></td>
+                    <td>January</td>
+                    <td>100</td>
+                </tr>
+        </tbody>
+        
+      </table>
+
+      <script>
+        /********行悬浮变色*********/
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        for(var i = 0;i<trs.length;i++){
+            trs[i].onmouseover = function(){
+                this.className = 'bg';
+            }
+            trs[i].onmouseout = function(){
+                this.className = '';
+            }
+        }
+
+        /********选择框**********/
+        var checkAll = document.getElementById('all');
+        var che = document.getElementById('tb').getElementsByTagName('input');
+        //点击全选
+        checkAll.onclick = function(){
+            for(var j = 0;j<che.length;j++){
+                che[j].checked = this.checked;
+            }
+        }
+        //取消单选时 全选取消
+
+        for(var a = 0;a<che.length;a++){
+            che[a].onclick = function(){
+                var flag = true;
+                for(var a = 0;a<che.length;a++){
+                    if (!che[a].checked) {    //为true时进入语句
+                        flag = false;
+                        break; //提高效率
+                    }
+                }
+                checkAll.checked = flag;
+            }
+        }
+
+      </script>
+</body>
+</html>
